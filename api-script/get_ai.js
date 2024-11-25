@@ -1,8 +1,10 @@
 const express = require("express");
+require("dotenv").config();
+
 const router = express.Router();
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-const Myai = new GoogleGenerativeAI("AIzaSyCC162T89VWSz4mCTsGPaPBClBUQ_QnHBI");
+const Myai = new GoogleGenerativeAI(process.env.gemini_api_key);
 let model = Myai.getGenerativeModel({ model: "gemini-1.5-flash" });
 const chat = model.startChat();
 
